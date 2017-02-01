@@ -7,6 +7,15 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 
+// User profile routes
+
+var neil = require('./routes/profiles/neil'); // this routes to the files that will render your page
+var tomche = require('./routes/profiles/tomche'); // this routes to the files that will render your page
+var bryan = require('./routes/profiles/bryan');
+var tracy = require('./routes/profiles/tracy');
+
+
+
 var app = express();
 
 // view engine setup
@@ -22,6 +31,18 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+
+// Defining the routes for our User profiles
+
+app.use('/neil', neil);
+app.use('/tomche', tomche);
+app.use('/bryan', bryan);
+app.use('/tracy', tracy);
+
+
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
